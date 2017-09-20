@@ -408,7 +408,6 @@ Node *Node::search(int index) {
     }
 }
 
-//todo
 void Node::deleteIndex(int index) {
     // if the index doesn't exist, return.
     if (!this->rootNode()->exist(index)) {
@@ -435,41 +434,6 @@ void Node::deleteIndex(int index) {
             delete this;
         }
     }
-}
-
-void Node::deleteNode() {
-    if (this->isRoot()) {
-        // todo: how to delete root node ?
-        return;
-    }
-    // remove the node from it's parent.
-    for (int i = 0; i < MAX_ITEM; i++) {
-        if (this->parent->index[i] == this->index[0]) {
-            while (true) {
-                if (i == MAX_ITEM - 1) {
-                    this->parent->index[i] = -1;
-                    this->parent->child[i] = nullptr;
-                    break;
-                }
-                if (this->parent->index[i + 1] == -1) {
-                    this->parent->index[i] = -1;
-                    this->parent->child[i] = nullptr;
-                    break;
-                }
-                this->parent->index[i] = this->parent->index[i + 1];
-                this->parent->child[i] = this->parent->child[i + 1];
-                i++;
-            }
-        }
-    }
-    // insert all child
-    for (int i = 0; i < MAX_ITEM; i++) {
-        if (this->child[i] == nullptr) {
-            break;
-        }
-        this->broNode(LEFT_BRO_FIRST)->insert(this->index[i], this->child[i]);
-    }
-    delete this;
 }
 
 void Node::show() {

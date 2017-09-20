@@ -53,7 +53,6 @@ public:
     bool exist(int index);
     Node *search(int index);
     void deleteIndex(int index);
-    void deleteNode();
 
     /// for test
     void show();

@@ -27,7 +27,6 @@ void plusLine() {
 
 
 }
-
 void newLine() {
     std::cout << std::endl;
 }
